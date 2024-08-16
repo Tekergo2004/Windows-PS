@@ -5,16 +5,16 @@
 > [!NOTE]
 > Something to describe what I'am doing.
 
-```ps
+```powershell
 netsh 
 ```
 
-## Create groups
+## Create groupowershell
 
 > [!NOTE]
 > Something to describe what I'am doing.
 
-```ps
+```powershell
 netsh 
 ```
 
@@ -23,16 +23,16 @@ netsh
 > [!NOTE]
 > Something to describe what I'am doing.
 
-```ps
+```powershell
 netsh 
 ```
 
-## Join to groups
+## Join to groupowershell
 
 > [!NOTE]
 > Something to describe what I'am doing.
 
-```ps
+```powershell
 netsh 
 ```
 
@@ -41,6 +41,6 @@ netsh
 > [!NOTE]
 > Something to describe what I'am doing.
 
-```ps
+```powershell
 netsh 
 ```
