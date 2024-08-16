@@ -11,6 +11,13 @@ Install-WindowsFeature `
     -IncludeManagementTools
 ```
 
+> [!NOTE]
+> Install schmmgmt, so you can use later ADDS snap-ins in mmc if you want to configure over GUI.
+
+```powershell
+regsvr32.exe schmmgmt.dll
+```
+
 ## 2. step: Deployment
 
 > [!NOTE]
