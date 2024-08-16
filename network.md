@@ -38,7 +38,7 @@ netsh int ipv4 set add "Internal" static 10.10.10.1 255.255.255.0 10.10.10.254
 ## Set dns server
 
 > [!NOTE]
-> Something to describe what I'am doing.
+> Set your DNS servers ip address, or the whatever you want to use.
 
 ```ps
 netsh int ipv4 set dns "Internal" static 10.10.10.254
