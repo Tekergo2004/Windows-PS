@@ -1,6 +1,6 @@
 # Network settings
 
-## Rename adapters
+## Primary zone
 
 > [!NOTE]
 > Something to describe what I'am doing.
@@ -9,7 +9,7 @@
 netsh 
 ```
 
-## Set ip address
+## Reverse zone
 
 > [!NOTE]
 > Something to describe what I'am doing.
@@ -18,7 +18,16 @@ netsh
 netsh 
 ```
 
-## Set dns server
+## Stub zone
+
+> [!NOTE]
+> Something to describe what I'am doing.
+
+```ps
+netsh 
+```
+
+## Replication
 
 > [!NOTE]
 > Something to describe what I'am doing.
