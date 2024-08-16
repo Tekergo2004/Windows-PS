@@ -1,21 +1,38 @@
 # Network settings
 
+## Rename computer
+
+> [!NOTE]
+> Change adapter name to another so you will know whith which interface you want to work.
+
+```ps
+Rename-Computer -NewName "WIN-PS"
+```
+
 ## Rename adapters
 
 > [!NOTE]
-> Something to describe what I'am doing.
+> Change adapter name to another so you will know whith which interface you want to work.
 
 ```ps
-netsh 
+Rename-NetAdapter -Name "Ethernet1" -NewName "Internal"
+Rename-NetAdapter -Name "Ethernet2" -NewName "External"
 ```
 
 ## Set ip address
 
 > [!NOTE]
-> Something to describe what I'am doing.
+> Set your interface to dhcp
 
 ```ps
-netsh 
+netsh int ipv4 set add "External" source=dhcp
+```
+
+> [!NOTE]
+> Set your interface to static ip address
+
+```ps
+netsh int ipv4 set add "Internal" static 10.10.10.1 255.255.255.0 10.10.10.254
 ```
 
 ## Set dns server
@@ -24,5 +41,5 @@ netsh
 > Something to describe what I'am doing.
 
 ```ps
-netsh 
+netsh int ipv4 set dns "Internal" static 10.10.10.254
 ```
