@@ -5,7 +5,7 @@
 > [!NOTE]
 > Install ADDS and DNS services.
 
-```ps
+```powershell
 Install-WindowsFeature `
     -name AD-Domain-Services,DNS `
     -IncludeManagementTools
@@ -16,7 +16,7 @@ Install-WindowsFeature `
 > [!NOTE]
 > Create a new forest.
 
-```ps
+```powershell
 Install-ADDSForest `
     -DomainName "tg.net" `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "Passw0rd" -AsPlainText -Force) `
@@ -30,7 +30,7 @@ Install-ADDSForest `
 > [!NOTE]
 > Create a RODC.
 
-```ps
+```powershell
 Install-ADDSDomainController `
     -DomainName "tg.net" `
     -InstallDNS `
@@ -47,7 +47,7 @@ Install-ADDSDomainController `
 > [!NOTE]
 > Create a sub domain.
 
-```ps
+```powershell
 Install-ADDSDomain `
     -NewDomainName "jedlik.tg.net" `
     -ParentDomainName "tg.net" `
