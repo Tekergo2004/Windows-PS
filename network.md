@@ -5,8 +5,8 @@
 > [!NOTE]
 > Change adapter name to another so you will know whith which interface you want to work.
 
-```ps
-Rename-Computer -NewName "WIN-PS"
+```powershell
+Rename-Computer -NewName "WIN-powershell"
 ```
 
 ## Rename adapters
@@ -14,7 +14,7 @@ Rename-Computer -NewName "WIN-PS"
 > [!NOTE]
 > Change adapter name to another so you will know whith which interface you want to work.
 
-```ps
+```powershell
 Rename-NetAdapter -Name "Ethernet1" -NewName "Internal"
 Rename-NetAdapter -Name "Ethernet2" -NewName "External"
 ```
@@ -24,14 +24,14 @@ Rename-NetAdapter -Name "Ethernet2" -NewName "External"
 > [!NOTE]
 > Set your interface to dhcp
 
-```ps
+```powershell
 netsh int ipv4 set add "External" source=dhcp
 ```
 
 > [!NOTE]
 > Set your interface to static ip address
 
-```ps
+```powershell
 netsh int ipv4 set add "Internal" static 10.10.10.1 255.255.255.0 10.10.10.254
 ```
 
@@ -40,6 +40,6 @@ netsh int ipv4 set add "Internal" static 10.10.10.1 255.255.255.0 10.10.10.254
 > [!NOTE]
 > Set your DNS servers ip address, or the whatever you want to use.
 
-```ps
+```powershell
 netsh int ipv4 set dns "Internal" static 10.10.10.254
 ```
