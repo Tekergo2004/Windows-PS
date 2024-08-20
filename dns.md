@@ -1,6 +1,9 @@
-# Network settings
+# DNS
 
 ## Install services
+
+> [!NOTE]
+> Install DNS service if you haven't already done it. You can use it in standalone mode and with adds. Adds uses DNS, so if you install it later, you will not have any conflicts with it.
 
 ```powershell
 Install-WindowsFeature `
