@@ -44,7 +44,13 @@ Add-DnsServerResourceRecordA `
     -Name "www" `
     -IPv4Address "192.168.1.200"
 
-    # Add a CNAME record
+# Add an AAAA record
+Add-DnsServerResourceRecordAAAA `
+    -ZoneName "tg.home" `
+    -Name "www" `
+    -IPv6Address "2001:db8:0323::f1a3"
+
+# Add a CNAME record
 Add-DnsServerResourceRecordCName `
     -ZoneName "tg.home" `
     -Name "mail" `
@@ -58,13 +64,45 @@ Add-DnsServerResourceRecordMX `
     -Preference 10
 ```
 
-## Reverse zone
+## Reverse zone IPv4
 
 > [!NOTE]
 > Create primary zone, if you don't have already one on another server. If you do, then go to Stub zone and replication. (IP -> Hostname)
 
 ```powershell
-netsh 
+Add-DnsServerPrimaryZone `
+    -NetworkId "192.168.19.0"
+```
+
+> [!NOTE]
+> You can add records into your zone like this.
+
+```powershell
+# Add an PTR record
+Add-DnsServerResourceRecordPtr `
+    -ZoneName "19.168.192.in-addr.arpa" `
+    -Name "200" `
+    -PtrDomainName "www.tg.home"
+```
+
+## Reverse zone IPv6
+
+> [!NOTE]
+> For this IPv6 prefix `2001:db8:0323::/48` you have to use this zone:
+
+```powershell
+Add-DnsServerPrimaryZone `
+    -NetworkId "3.2.d.b.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa"
+```
+
+> The address is `2001:db8:0323::f1a3`
+
+```powershell
+# Add an PTR record
+Add-DnsServerResourceRecordPtr `
+    -ZoneName "3.2.d.b.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa" `
+    -Name "3.a.f.1"
+    -PtrDomainName "www.tg.home"
 ```
 
 ## Stub zone
