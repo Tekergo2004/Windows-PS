@@ -22,19 +22,22 @@ $DnsServerSettings.ListeningIpAddress = @("192.168.1.8")
 Set-DNSServerSetting $DnsServerSettings
  ```
 
-## Primary zone
+## Forward zone
 
 > [!NOTE]
-> Create primary zone
+> Create primary zone, if you don't have already one on another server. If you do, then go to Stub zone and replication. (Hostname -> IP)
 
 ```powershell
-netsh 
+Add-DnsServerPrimaryZone `
+    -Name "tg.home" `
+    -ZoneFile "tg.home.dns" `
+    -DynamicUpdate None
 ```
 
 ## Reverse zone
 
 > [!NOTE]
-> Something to describe what I'am doing.
+> Create primary zone, if you don't have already one on another server. If you do, then go to Stub zone and replication. (IP -> Hostname)
 
 ```powershell
 netsh 
@@ -47,6 +50,17 @@ netsh
 
 ```powershell
 netsh 
+```
+
+## Forwarder
+
+> [!NOTE]
+> Set up another ip forwarder DNS server. (A server that will provide DNS lookup if yours don't know what the client looking for.)
+
+```powershell
+Add-DnsServerForwarder `
+    -IPAddress "8.8.8.8" `
+    -PassThru
 ```
 
 ## Replication
