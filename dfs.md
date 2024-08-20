@@ -6,7 +6,7 @@
 > We will install DFS-namespace, and Replication services in a domain so, be a domain controller or be in a domain!
 
 ```powershell
-Install-WindowsFeature `
+Install-WindowsFeature
     -name FS-DFS-Namespace,FS-DFS-Replication
     -IncludeManagementTools
 ```
@@ -136,7 +136,7 @@ Set-DfsrMembership
 > Install DFS server in standalone mode.
 
 ```powershell
-Install-WindowsFeature `
+Install-WindowsFeature
     -name 
     -IncludeManagementTools
 ```
