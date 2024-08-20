@@ -1,5 +1,13 @@
 # Network settings
 
+## Install services
+
+```powershell
+Install-WindowsFeature `
+    -name DNS
+    -IncludeManagementTools
+```
+
 ## Primary zone
 
 > [!NOTE]
