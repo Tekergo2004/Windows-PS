@@ -6,7 +6,7 @@
 > We will install DHCP service in a domain so, be a domain controller or in a domain!
 
 ```powershell
-Install-WindowsFeature `
+Install-WindowsFeature
     -name 
     -IncludeManagementTools
 ```
@@ -17,7 +17,7 @@ Install-WindowsFeature `
 > Install DFS server in standalone mode.
 
 ```powershell
-Install-WindowsFeature `
+Install-WindowsFeature
     -name 
     -IncludeManagementTools
 ```
