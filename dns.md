@@ -106,6 +106,15 @@ Add-DnsServerResourceRecordMX `
 netsh 
 ```
 
+## Replication
+
+> [!NOTE]
+> Something to describe what I'am doing.
+
+```powershell
+netsh 
+```
+
 ## Forwarder
 
 > [!NOTE]
@@ -115,13 +124,4 @@ netsh
 Add-DnsServerForwarder `
     -IPAddress "8.8.8.8" `
     -PassThru
-```
-
-## Replication
-
-> [!NOTE]
-> Something to describe what I'am doing.
-
-```powershell
-netsh 
 ```
