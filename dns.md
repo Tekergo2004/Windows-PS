@@ -34,6 +34,30 @@ Add-DnsServerPrimaryZone `
     -DynamicUpdate None
 ```
 
+> [!NOTE]
+> You can add records into your zone like this.
+
+```powershell
+# Add an A record
+Add-DnsServerResourceRecordA `
+    -ZoneName "tg.home" `
+    -Name "www" `
+    -IPv4Address "192.168.1.200"
+
+    # Add a CNAME record
+Add-DnsServerResourceRecordCName `
+    -ZoneName "tg.home" `
+    -Name "mail" `
+    -HostNameAlias "www.tg.home"
+
+# Add an MX record
+Add-DnsServerResourceRecordMX `
+    -ZoneName "tg.home" `
+    -Name "@" `
+    -MailExchange "mail.example.com" `
+    -Preference 10
+```
+
 ## Reverse zone
 
 > [!NOTE]
