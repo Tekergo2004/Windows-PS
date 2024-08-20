@@ -5,13 +5,68 @@
 
 ```powershell
 gpupdate /force
+
+# or use this
+
+Invoke-GPUpdate -Computer "*"
 ```
 
 ## Default settings for a server envritoment
 
 > [!NOTE]
-> There area some settings that I use until configuring a windows server.
+> There area some settings that I use until configuring a windows server. Ensure that it is available.
 
 ```powershell
+Import-Module GroupPolicy
+```
 
+> [!NOTE]
+> Create a new GPO
+
+```powershell
+# Get the GPO by name, or create it if it doesn't exist
+New-GPO -Name "TG Domain Policies" -Comment "GPO settings for my organization"
+New-GPLink -Name "TG Domain Policies" -Target "DC=tg,DC=net"
+```
+
+> [!NOTE]
+> Disable CTRL+ALT+DEL login (`Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options`)
+
+```powershell
+Set-GPRegistryValue -Name "TG Domain Policies" -Key "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -ValueName "DisableCAD" -Type DWord -Value 0
+```
+
+> [!NOTE]
+> Disable first logon animation (`Computer Configuration\Administrative Templates\System\Logon`)
+
+```powershell
+Set-GPRegistryValue -Name "TG Domain Policies" -Key "HKLM\Software\Policies\Microsoft\Windows\System" -ValueName "EnableFirstLogonAnimation" -Type DWord -Value 0
+```
+
+> [!NOTE]
+> Enable ICMP all over the computers (`Computer Configuration\Policies\Windows Settings\Security Settings\Windows Defender Firewall with Advanced Security\Windows Defender Firewall with Advanced Security - LDAP`)
+
+```powershell
+Set-GPRegistryValue -Name $GPOName -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv4" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
+
+Set-GPRegistryValue -Name $GPOName -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv6" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
+```
+
+> [!NOTE]
+> First create the directory and copy the `.msi` packages into that folder, what you have shared. After that deploy this package(s). (`Computer Configuration\Policies\Software Settings\Software installation`)
+
+```powershell
+New-Item "C:\Software" -ItemType Directory
+New-SmbShare -Name "Software" -Path "C:\Software" -FullAccess Admins -ReadAccess Everyone
+```
+
+```powershell
+New-GPSoftwareInstallation -Name "TG Domain Policies" -Package "\\tg.net\software\firefox.msi" -AssignmentMethod Assigned
+```
+
+> [!NOTE]
+> Add a shared directory as network shared directory to every computer in your domain. (If you want to give it to just someone create a GPO linking to an ou and set it.) Use DFSN or create a new share. (`User Configuration\Preferences\Windows Settings\Drive Maps`)
+
+```powershell
+New-GPRegistryValue -Name "TG Domain Policies" -Key "HKCU\Software\Policies\Microsoft\Windows\Network Connections" -ValueName "NC_AllowNetSetup" -Type DWord -Value 1; New-GPDriveMapping -DriveLetter "H:" -Location "\\TG.NET\Files" -Reconnect $true
 ```
