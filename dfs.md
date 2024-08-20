@@ -68,9 +68,9 @@ New-DfsReplicatedFolder -GroupName "TG-REP" -FolderName IT,Marketing,HR
 
 ```powershell
 Add-DfsrConnection
-        -GroupName "TG-REP"
-        -SourceComputerName "WIN-PS.tg.net"
-        -DestinationComputerName "WIN-REP.tg.net"
+    -GroupName "TG-REP"
+    -SourceComputerName "WIN-PS.tg.net"
+    -DestinationComputerName "WIN-REP.tg.net"
 ```
 
 ```powershell
