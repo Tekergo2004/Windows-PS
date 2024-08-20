@@ -100,19 +100,10 @@ Add-DnsServerResourceRecordMX `
 ## Stub zone
 
 > [!NOTE]
-> Something to describe what I'am doing.
+> This is for creating a 'copy' to another server, reduce latency of the users queries and redundant. You will have the zone from the other DNS server. You just have to know the name of the zone and the ip address of the server.
 
 ```powershell
-netsh 
-```
-
-## Replication
-
-> [!NOTE]
-> Something to describe what I'am doing.
-
-```powershell
-netsh 
+Add-DnsServerStubZone -Name "tg.home" -MasterServers "192.168.19.200" (-ReplicationScope "Forest") # Add this to the end if you're using adds on both device.
 ```
 
 ## Forwarder
