@@ -36,8 +36,8 @@ netsh int ipv4 set add "Internal" static 192.168.19.1 255.255.255.0 10.10.10.254
 ```
 
 ```powershell
-rem ????????
-netsh int ipv6 set add "Internal" static fe80:192:168:19:1
+rem ?????
+add address [interface=] string [address=] ipv6address
 ```
 
 ## Set dns server
