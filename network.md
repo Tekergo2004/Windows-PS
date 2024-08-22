@@ -36,8 +36,14 @@ netsh int ipv4 set add "Internal" static 192.168.19.1 255.255.255.0 10.10.10.254
 ```
 
 ```powershell
-rem ?????
-add address [interface=] string [address=] ipv6address
+netsh int ipv6 set add "External" 2001:db8:f1a3::1/48
+```
+
+> [!NOTE]
+> Set IPv6 gateway
+
+```powershell
+netsh interface ipv6 add route ::/0 "External" 2001:db8:f1a3::1
 ```
 
 ## Set dns server
