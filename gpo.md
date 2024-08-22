@@ -52,6 +52,10 @@ Set-GPRegistryValue -Name "TG Domain Policies" -Key HKLM\SOFTWARE\Policies\Micro
 Set-GPRegistryValue -Name "TG Domain Policies" -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv6" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
 ```
 
+
+# FROM THIS NOT WORKING
+
+
 > [!NOTE]
 > First create the directory and copy the `.msi` packages into that folder, what you have shared. After that deploy this package(s). (`Computer Configuration\Policies\Software Settings\Software installation`)
 
