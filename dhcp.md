@@ -1,4 +1,4 @@
-# DHCP ---> TODO
+# DHCP
 
 > [!NOTE]
 > First there will be some settings for Standalone and ADDS DHCP servers but then it will be the same configuration!
