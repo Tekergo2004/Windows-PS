@@ -34,3 +34,55 @@ New-FsrmQuota
     -Description "limit usage to 100 GB."
     -Size 100GB
 ```
+
+> [!NOTE]
+> Create file screening groups and after that create the screenings on the folders (this will screen the extensions in the folder).
+
+```powershell
+New-FsrmFileGroup
+    -Name "G-Marketing"
+    -IncludePattern "*.*"
+    -ExcludePattern @("*.doc", "*.docx", "*.xls", "*.xlsx", "*.xml", "*.pdf", "*.txt")
+```
+
+```powershell
+New-FsrmFileGroup
+    -Name "G-HR"
+    -IncludePattern "*.*"
+    -ExcludePattern @("*.doc", "*.docx", "*.jpg", "*.pdf", "*.txt")
+```
+
+```powershell
+New-FsrmFileGroup
+    -Name "G-IT"
+    -IncludePattern "*.exe"
+```
+
+> [!NOTE]
+> Creation of the file screening.
+
+
+```powershell
+New-FsrmFileScreen
+    -Path "C:\Marketing"
+    -Description "Marketing"
+    -IncludeGroup "G-Marketing"
+    -Active
+```
+
+```powershell
+
+New-FsrmFileScreen
+    -Path "C:\HR"
+    -Description "HR"
+    -IncludeGroup "G-HR"
+    -Active
+```
+
+```powershell
+New-FsrmFileScreen
+    -Path "C:\IT"
+    -Description "IT"
+    -IncludeGroup "G-IT"
+    -Active
+```
