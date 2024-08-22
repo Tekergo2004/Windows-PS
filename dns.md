@@ -20,7 +20,7 @@ Install-WindowsFeature
 $DnsServerSettings = Get-DnsServerSetting -ALL
 $DnsServerSettings.ListeningIpAddress = @("192.168.1.8")
 Set-DNSServerSetting $DnsServerSettings
-``
+```
 
 ## Reverse zone IPv4
 
