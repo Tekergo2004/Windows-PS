@@ -53,7 +53,13 @@ Set-DhcpServerv4DnsSetting -ComputerName "DHCP1.corp.contoso.com" -DynamicUpdate
 
 ```powershell
 $Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
+
+rem For stanadlone server
 $Credential = New-Object System.Management.Automation.PSCredential("DHCP1\Administrator", $Password)
+
+rem For DHCP server in a domain
+$Credential = New-Object System.Management.Automation.PSCredential("TG.NET\Administrator", $Password)
+
 Set-DhcpServerDnsCredential -Credential $Credential -ComputerName "DHCP1.tg.net"
 ```
 
