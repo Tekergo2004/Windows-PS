@@ -16,11 +16,13 @@ Install-WindowsFeature
 
 ```powershell
 New-Item "C:\Files" -Type Directory
+
 New-SmbShare -Name "Files" -Path "C:\Files" -FullAccess Admins -ReadAccess Employees -ChangeAccess Admins
 ```
 
 ```powershell
 New-Item "C:\Marketing",”C:\IT",”C:\HR" -Type Directory
+
 New-SmbShare -Name “Marketing” -Path “C:\Marketing” -FullAccess Admins,Marketing -ChangeAccess Admins
 New-SmbShare -Name “HR” -Path “C:\HR” -FullAccess Admins,HR -ChangeAccess Admins
 New-SmbShare -Name “IT” -Path “C:\IT” -FullAccess Admins,IT -ChangeAccess Admins
@@ -137,6 +139,6 @@ Set-DfsrMembership
 
 ```powershell
 Install-WindowsFeature
-    -name 
+    -name FS-DFS-Namespace,FS-DFS-Replication
     -IncludeManagementTools
 ```
