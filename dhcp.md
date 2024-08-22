@@ -72,3 +72,17 @@ Add-DhcpServerv4ExclusionRange -ScopeID 192.168.19.0 -StartRange 192.168.19.128 
 Set-DhcpServerv4OptionValue -OptionID 3 -Value 192.168.19.1 -ScopeID 192.168.19.0 -ComputerName DHCP1.tg.net
 Set-DhcpServerv4OptionValue -DnsDomain tg.net -DnsServer 192.168.19.135
 ```
+
+> [!NOTE]
+> Other methods to confiugre DHCP scope options
+
+```powershell
+Set-DhcpServerv4OptionValue
+    -ScopeId 192.168.19.0
+    -ComputerName "DHCP1.tg.net"
+    -DnsServer 192.168.19.135
+    -WinsServer 192.168.19.135
+    -DnsDomain "tg.net"
+    -Router 192.168.19.1
+    -OptionId x -Value "xy"
+```
