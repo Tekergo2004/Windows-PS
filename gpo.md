@@ -47,9 +47,9 @@ Set-GPRegistryValue -Name "TG Domain Policies" -Key "HKLM\Software\Policies\Micr
 > Enable ICMP all over the computers (`Computer Configuration\Policies\Windows Settings\Security Settings\Windows Defender Firewall with Advanced Security\Windows Defender Firewall with Advanced Security - LDAP`)
 
 ```powershell
-Set-GPRegistryValue -Name $GPOName -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv4" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
+Set-GPRegistryValue -Name "TG Domain Policies" -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv4" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
 
-Set-GPRegistryValue -Name $GPOName -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv6" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
+Set-GPRegistryValue -Name "TG Domain Policies" -Key HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\GloballyOpenPorts\List -ValueName "7:IPv6" -Type String -Value "7:TCP:7:*:Enabled:@FirewallAPI.dll,-28502"
 ```
 
 > [!NOTE]
