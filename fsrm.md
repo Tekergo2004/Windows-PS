@@ -1,4 +1,4 @@
-# FSRM -----> TODO
+# FSRM
 
 ## Install services
 
