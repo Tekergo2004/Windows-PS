@@ -56,3 +56,13 @@ $Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential("DHCP1\Administrator", $Password)
 Set-DhcpServerDnsCredential -Credential $Credential -ComputerName "DHCP1.tg.net"
 ```
+
+> [!NOTE]
+> Configure a scope.
+
+```powershell
+Add-DhcpServerv4Scope -name "TGNet" -StartRange 192.168.19.10 -EndRange 192.168.19.254 -SubnetMask 255.255.255.0 -State Active
+Add-DhcpServerv4ExclusionRange -ScopeID 192.168.19.0 -StartRange 192.168.19.128 -EndRange 192.168.19.254
+Set-DhcpServerv4OptionValue -OptionID 3 -Value 192.168.19.1 -ScopeID 192.168.19.0 -ComputerName DHCP1.tg.net
+Set-DhcpServerv4OptionValue -DnsDomain tg.net -DnsServer 192.168.19.135
+```
