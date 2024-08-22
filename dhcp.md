@@ -47,3 +47,12 @@ Set-ItemProperty –Path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServerM
 ```powershell
 Set-DhcpServerv4DnsSetting -ComputerName "DHCP1.corp.contoso.com" -DynamicUpdates "Always" -DeleteDnsRRonLeaseExpiry $True\
 ```
+
+> [!NOTE]
+> DHCP server registers or unregisters client records on a DNS server.
+
+```powershell
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential("DHCP1\Administrator", $Password)
+Set-DhcpServerDnsCredential -Credential $Credential -ComputerName "DHCP1.tg.net"
+```
