@@ -57,15 +57,32 @@ Set-GPRegistryValue -Name "TG Domain Policies" -Key HKLM\SOFTWARE\Policies\Micro
 
 
 > [!NOTE]
-> First create the directory and copy the `.msi` packages into that folder, what you have shared. After that deploy this package(s). (`Computer Configuration\Policies\Software Settings\Software installation`)
+> First create the directory and copy the `.msi` packages into that folder, what you have shared. After that deploy this package(s). Because there is no powershell script for this we will deploy a powershell script that runs the 'deployment'.(`Computer Configuration\Policies\Software Settings\Software installation`)
 
 ```powershell
 New-Item "C:\Software" -ItemType Directory
-New-SmbShare -Name "Software" -Path "C:\Software" -FullAccess Admins -ReadAccess Everyone
+New-SmbShare -Name "Software" -Path "C:\Software" -FullAccess Domain Admins -ReadAccess Everyone
 ```
 
+> [!NOTE]
+> If you want to have more script deployment, and you will want... than you have to create a folder for that you will share.
+
 ```powershell
-New-GPSoftwareInstallation -Name "TG Domain Policies" -Package "\\tg.net\software\firefox.msi" -AssignmentMethod Assigned
+New-Item "C:\StScripts" -ItemType Directory
+New-SmbShare -Name "StScripts" -Path "C:\StScripts" -FullAccess Domain Admins -ReadAccess Everyone
+```
+
+`C:\Scripts\deploy.ps1`
+
+```powershell
+msiexec.exe /i /passive /quiet \\WIN-PS\Software\firefox.msi
+```
+
+> [!NOTE]
+> You can add startup scripts here: `Computer Configuration\Policies\Windows Settings\Scripts (Startup/Shutdown)`
+
+```powershell
+Set-GPShutdownScript -ScriptName "deploy.ps1" -ScriptPath "\\WIN-PS\StScripts\deploy.ps1" -GPOName "TG"
 ```
 
 > [!NOTE]
