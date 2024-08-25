@@ -233,7 +233,7 @@ winrm quickconfig -transport:https
   - name: Reboot
     win_reboot:
     when: domain.reboot_required
-    
+
 - name: Joining PA-RTR to domain
   hosts: PA-RTR
   gather_facts: false
@@ -278,5 +278,3 @@ winrm quickconfig -transport:https
     - name: Run a  cmd command
       win_command: cmd.exe /c mkdir C:\temp
 ```
-
-
