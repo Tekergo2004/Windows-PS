@@ -1,4 +1,4 @@
-# ADDS USERS ---> TODO
+# ADDS USERS
 
 ## Create organizational units (ous)
 
