@@ -33,7 +33,7 @@ New-GPLink -Name "TG Domain Policies" -Target "DC=tg,DC=net"
 > Disable CTRL+ALT+DEL login (`Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options`)
 
 ```powershell
-Set-GPRegistryValue -Name "TG Domain Policies" -Key "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -ValueName "DisableCAD" -Type DWord -Value 0
+Set-GPRegistryValue -Name "TG Domain Policies" -Key "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -ValueName "DisableCAD" -Type DWord -Value Enabled
 ```
 
 > [!NOTE]
